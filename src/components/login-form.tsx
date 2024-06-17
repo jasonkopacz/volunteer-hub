@@ -39,6 +39,7 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
       <ControlledInput
         testID="name"
         control={control}
+        rules={{}}
         name="name"
         label="Name"
       />
@@ -46,12 +47,14 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
       <ControlledInput
         testID="email-input"
         control={control}
+        rules={{}}
         name="email"
         label="Email"
       />
       <ControlledInput
         testID="password-input"
         control={control}
+        rules={{}}
         name="password"
         label="Password"
         placeholder="***"

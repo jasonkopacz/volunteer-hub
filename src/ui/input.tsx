@@ -53,21 +53,24 @@ export interface NInputProps extends TextInputProps {
   error?: string;
 }
 
-type TRule = Omit<
+type TRule<T> = Omit<
   RegisterOptions,
   'valueAsNumber' | 'valueAsDate' | 'setValueAs'
->;
+> & { deps?: Path<T> | Path<T>[] | undefined };
 
-export type RuleType<T> = { [name in keyof T]: TRule };
+export type RuleType<T> = { [name in keyof T]: TRule<T> };
 export type InputControllerType<T extends FieldValues> = {
   name: Path<T>;
   control: Control<T>;
-  rules?: TRule;
+  rules?: TRule<T>;
 };
 
 interface ControlledInputProps<T extends FieldValues>
   extends NInputProps,
-    InputControllerType<T> {}
+    InputControllerType<T> {
+  name: Path<T>;
+  rules: TRule<T>;
+}
 
 export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
   const { label, error, testID, ...inputProps } = props;

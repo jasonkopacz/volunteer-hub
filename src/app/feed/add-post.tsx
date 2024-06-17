@@ -53,12 +53,14 @@ export default function AddPost() {
           name="title"
           label="Title"
           control={control}
+          rules={{}}
           testID="title"
         />
         <ControlledInput
           name="body"
           label="Content"
           control={control}
+          rules={{}}
           multiline
           testID="body-input"
         />
